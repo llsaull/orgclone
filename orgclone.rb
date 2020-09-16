@@ -36,8 +36,8 @@ end
 
 def clone_matching_repos(repos, prefix)
   repos.select { |repo| repo['name'].start_with? "#{prefix}-" }.map do |repo|
-    puts "Cloning #{repo['name']}..."
-    %x( git clone #{repo['ssh_url']} )
+    puts "Cloning #{repo['name']} #{repo['html_url']}..."
+    %x( git clone #{repo['html_url']} )
     repo['name']
   end
 end
